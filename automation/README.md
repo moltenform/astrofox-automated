@@ -2,6 +2,8 @@
 
 These features added by moltenform(Ben Fisher).
 
+See also: [astrofox speed tips](./astrofox-speed-tips.md)
+
 ## Prereqs
 
 - Python 3
@@ -16,7 +18,10 @@ These features added by moltenform(Ben Fisher).
 - edit `components/modals/VideoSettings.js`
     - go to `autoSetVidSettings()`
     - enter your desired output path and frame rate
-- edit 
+- edit `go_automate.py`
+    - edit configs at top of file
+- edit `go_automate_lnz_part.js`
+    - edit configs at top of file
 
 ## Building
 
@@ -25,5 +30,9 @@ These features added by moltenform(Ben Fisher).
 ## Running
 
 - run `go_automate.py` and wait.
+- it will look at input audio in the directory you provided when you edited the configs at top of the script
 - it will start astrofox, do the rendering, and exit.
+
+
+
 
