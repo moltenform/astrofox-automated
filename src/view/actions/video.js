@@ -13,6 +13,8 @@ const initialState = {
 
 const videoStore = create(() => ({ ...initialState }));
 
+// attempted to add autoRender here, but did not work
+
 export function startRender(props) {
   player.stop();
 

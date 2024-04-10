@@ -35,6 +35,8 @@ const initialState = {
   timeEnd: 0,
 };
 
+let hasDoneItYet = false
+
 export default function VideoSettings({ onClose }) {
   const [audioFile, duration] = useAudio(state => [state.file, state.duration], shallow);
   const [state, setState] = useState(initialState);
@@ -50,6 +52,27 @@ export default function VideoSettings({ onClose }) {
       timeEnd: duration,
     }));
   }, []);
+
+   // note that this gets fired several times, until the right one comes.
+   // the multiple calls (that might not even be fixed by hasDoneItYet)
+   // is probably part of why auto-calling handleStart did not work
+    setTimeout(() => {
+      if (!hasDoneItYet) 
+      {
+        autoSetVidSettings()
+        hasDoneItYet = true
+      }
+  }, 3 * 1000)
+
+
+  function autoSetVidSettings() {
+    setState(state => ({
+      ...state,
+      "videoFile": "D:\\current_video.mp4",
+      "fps": 30, 
+      "quality": "high",
+    }));
+  }
 
   function handleChange(props) {
     if (props.codec && videoFile) {

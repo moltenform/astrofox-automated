@@ -81,3 +81,9 @@ export async function openAudioFile(play) {
 }
 
 export default audioStore;
+
+// attempt:
+// set timeout to loadAudioFile("D:\\a.wav", false /* play */)
+// did not work
+// 
+

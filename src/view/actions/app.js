@@ -148,6 +148,25 @@ export async function handleMenuAction(action) {
     case 'about':
       await showModal('About');
       break;
+    
+    // attempted to add a new command, auto-render-vid
+    // attempt 1: 
+    // directly call
+    // vprops={"videoFile":"H:\\ttt.mp4","codec":"x264","fps":8,"quality":"high","timeStart":0,"timeEnd":21.72517006802721,"audioFile":"d:\\a.wav"}
+    // renderVideo(vprops)
+    // didn't work because audio-loaded flag somewhere is still false
+    // attempt 2:
+    // set timeout loadAudioFile("d:\\a.wav") then
+    // set timeout showModal('VideoSettings', { title: 'Save Video' });
+    // attempt 3:
+    // set timeout loadAudioFile handleMenuAction('load-audio')
+    // set timeout loadAudioFile handleMenuAction('save-video')
+    // still didn't work
+    // i'll have to make changes somewhere else
+  
+    case 'auto-render-vid':
+      await autoRenderVid()
+      break;
 
     case 'exit':
       await exitApp();

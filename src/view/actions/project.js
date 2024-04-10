@@ -178,3 +178,8 @@ export async function openProjectFile() {
 }
 
 export default projectStore;
+
+// attempt:
+// set timeout to loadProjectFile("D:\\a.afx")
+// did not work
+// 
