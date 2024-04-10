@@ -12,6 +12,7 @@ See also: [astrofox speed tips](./astrofox-speed-tips.md)
     - (if you're using this project, should be quick to remove this dependency, let me know)
 - Node and Yarn
     - (see astrofox's readme, you'll need enough preqreqs to build astrofox from source)
+    - (if building astrofox and running `yarn start` runs the app, you are ready)
 
 ## Configuration
 
