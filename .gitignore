@@ -23,3 +23,5 @@ dist
 /app/
 /plugins/
 /resources/
+
+private
