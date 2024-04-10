@@ -16,6 +16,11 @@ import { setZoom, zoomIn, zoomOut, fitToScreen } from 'actions/stage';
 import * as displays from 'displays';
 import * as effects from 'effects';
 
+
+import loadProjectFile from 'actions/project';
+import loadAudioFile from 'actions/audio';
+
+
 const initialState = {
   statusText: '',
   showControlDock: true,
@@ -74,6 +79,7 @@ export function setActiveElementId(elementId) {
 }
 
 export async function handleMenuAction(action) {
+  console.log('gotta menu action',action )
   const { file } = projectStore.getState();
 
   switch (action) {
@@ -148,11 +154,31 @@ export async function handleMenuAction(action) {
     case 'about':
       await showModal('About');
       break;
+  
+    case 'auto-render-vid':
+      await autoRenderVid()
+      break;
 
     case 'exit':
       await exitApp();
       break;
   }
+}
+
+async function autoRenderVid() {
+  
+    setTimeout(()=> {
+      console.log('trig1')
+      handleMenuAction('save-video')
+    }, 22 * 1000)
+    //setTimeout(async ()=> {await loadAudioFile("D:\\mirr3\\devhere\\w2bsample2short.ogg", false /* play */)}, 6000)
+    //const vprops = 
+    //{"videoFile":"H:\\ttt.mp4","codec":"x264","fps":8,"quality":"high",
+    //"timeStart":0,"timeEnd":21.72517006802721,"audioFile":"D:\\mirr3\\devhere\\w2bautomate\\auto-input.ogg"}
+//
+    //await showModal('VideoSettings', { title: 'Save Video' });
+
+    
 }
 
 export async function loadPlugins() {

@@ -120,12 +120,18 @@ export function checkUnsavedChanges(menuAction, action) {
 }
 
 export async function loadProjectFile(file) {
+  console.log('trig0')
   try {
+    console.log('aaa1')
     const data = await api.loadProjectFile(file);
 
+    console.log('aaa2')
     await loadProject(data);
+    console.log('aaa3')
     await loadScenes();
+    console.log('aaa4')
     await projectStore.setState({ file, opened: Date.now(), lastModified: 0 });
+    console.log('aaa5')
   } catch (e) {
     return raiseError('Invalid project file.', e);
   }
@@ -178,3 +184,11 @@ export async function openProjectFile() {
 }
 
 export default projectStore;
+
+//autoRenderVid
+if (false) {
+  setTimeout(()=> {
+  console.log('trig1')
+  loadProjectFile("D:\\mirr3\\devhere\\project2c.afx")
+}, 9000)
+}
