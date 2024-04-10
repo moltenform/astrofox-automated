@@ -1,14 +1,15 @@
 # Astrofox
 
+
+## Automation
+
+This fork of Astrofox has been modified to facilitate running automated in the background. [Click here to read how.](./automation/README.md)
+
 ## What is it?
 
 Astrofox is a motion graphics program that lets turn audio into amazing videos.
 
 <img src="https://astrofox.io/images/screenshot.jpg" width="600" />
-
-## Automation
-
-This fork of Astrofox has been modified to facilitate running automated in the background. [Click here to read how.](./automation/README.md)
 
 ## Quick links
 

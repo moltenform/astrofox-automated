@@ -18,7 +18,6 @@ config.btnStartCoordY = 781
 // get this from the cmd line args
 config.audioToLoad = argv[1]
 
-
 function go() {
 	sleepBetweenActions()
 	Keyboard.send('<Control><Alt>o');
@@ -40,8 +39,10 @@ function go() {
 	
 	Keyboard.send('<Control><Alt>r'); 
 	sleepBetweenActions()
-	// now wait again, for it to autofill some video settings
+	
+	// now wait again, for it to autofill some video settings on its own, see the mods in VideoSettings.js
 	sleepBetweenActions()
+	
 	// click on start
 	Mouse.click(config.btnStartCoordX, config.btnStartCoordY)
 }

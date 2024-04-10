@@ -35,16 +35,15 @@ def getConfigs():
     # suffix of input files
     config.inputFileSuffix = '.mp3' 
     
-    # you don't need to edit these ones 
+    # you don't need to edit these ones
     config.pathLnzScript = os.path.abspath('./go_automate_lnz_part.js')
     assertTrue(files.isfile(config.pathLnzScript))
     
-    
     return config
 
+config = getConfigs()
 
 def launch():
-    config = getConfigs()
     os.chdir('..')
     process = subprocess.Popen([config.yarnCmd, 'start'])
     sleepBetweenActions()
@@ -52,7 +51,6 @@ def launch():
     return appInstance
 
 def goOneVideo(audioToProcess, finalOutput):
-    config = getConfigs()
     assertTrue(not ' ' in config.expectedOut)
     assertTrue(not files.exists(config.expectedOut),
         'incomplete results found, please delete before continuing')
@@ -108,12 +106,10 @@ def goOneVideo(audioToProcess, finalOutput):
             print('waiting-not seeing...-')
 
 def killNodeAndWait():
-    config = getConfigs()
     files.run('taskkill /f /im node.exe', shell=True, throwOnFailure=None)
     sleepBetweenActions()
 
 def canRenameFile(s):
-    config = getConfigs()
     assertTrue(not files.exists(s+'.mp4'))
     try:
         files.move(s, s+'.mp4', True)
@@ -129,7 +125,6 @@ def canRenameFile(s):
 
 
 def goEntireDirectory(dir, mustEndWith):
-    config = getConfigs()
     for f, short in files.listfiles(dir):
         if f.endswith(mustEndWith):
             finalOutput = f + '.out.mp4'
@@ -144,12 +139,10 @@ def goEntireDirectory(dir, mustEndWith):
 
 def sleepBetweenActions():
     # add frequent sleeps, to wait for ui to be ready
-    config = getConfigs()
     Time.sleep(4)
 
 
 if __name__ == '__main__':
-    config = getConfigs()
     goEntireDirectory(config.directoryWithInputFiles, config.inputFileSuffix)
 
 
