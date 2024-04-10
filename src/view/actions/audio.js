@@ -19,7 +19,6 @@ const audioStore = create(() => ({
 }));
 
 export async function loadAudioFile(file, play) {
-  console.log('audtrig2')
   audioStore.setState({ loading: true });
 
   player.stop();
@@ -30,7 +29,6 @@ export async function loadAudioFile(file, play) {
     const data = await api.readAudioFile(file);
     const audio = await loadAudioData(data);
     const duration = audio.getDuration();
-    console.log('audtrig3')
 
     player.load(audio);
     audio.addNode(analyzer.analyzer);
@@ -46,7 +44,6 @@ export async function loadAudioFile(file, play) {
     logger.timeEnd('audio-file-load', 'Audio file loaded:', file);
 
     const tags = await api.loadAudioTags(file);
-    console.log('audtrig4')
 
     if (tags) {
       const { artist, title } = tags;
@@ -57,7 +54,6 @@ export async function loadAudioFile(file, play) {
     }
 
     audioStore.setState({ file, duration, tags, loading: false });
-    console.log('audtrig5')
   } catch (error) {
     raiseError('Invalid audio file.', error);
 
@@ -85,12 +81,3 @@ export async function openAudioFile(play) {
 }
 
 export default audioStore;
-
-//autoRenderVid
-if (false) {
-setTimeout(()=> {
-  console.log('audtrig1')
-  loadAudioFile("D:\\mirr3\\devhere\\w2bsample2short.ogg", false /* play */)
-}, 15 * 1000)
-}
-

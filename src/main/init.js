@@ -1,4 +1,4 @@
-import { app, session, systemPreferences, globalShortcut  } from 'electron';
+import { app, session, systemPreferences } from 'electron';
 import fs from 'fs';
 import path from 'path';
 import glob from 'glob';
@@ -8,8 +8,6 @@ import * as env from './environment';
 import initMenu from './menu';
 import initAutoUpdate from './autoupdate';
 import initEvents from './events';
-
-import { sendMessage } from 'main/window';
 
 const log = debug('init');
 
@@ -80,31 +78,4 @@ export default async function init() {
     systemPreferences.setUserDefault('NSDisabledDictationMenuItem', 'boolean', true);
     systemPreferences.setUserDefault('NSDisabledCharacterPaletteMenuItem', 'boolean', true);
   }
-
-  if (fs.existsSync('D:/acool/astr/control.txt')) {
-    log('1new feature starting')
-    console.log('new feature starting')
-
-    //auto-render-vid
-
-    // setTimeout(()=> sendMessage('menu-action',  'auto-render-vid'), 6000);
-    setTimeout(()=> makeKeyboardShortcuts(), 3000);
-    
-
-  } else {
-    log('1new feature directed not to start')
-    console.log('new feature directed not to start')
-  }
-}
-
-function makeKeyboardShortcuts() {
-  globalShortcut.register('Alt+CommandOrControl+O', () => {
-    sendMessage('menu-action',  'open-project')
-  })
-  globalShortcut.register('Alt+CommandOrControl+L', () => {
-    sendMessage('menu-action',  'load-audio')
-  })
-  globalShortcut.register('Alt+CommandOrControl+R', () => {
-    sendMessage('menu-action',  'save-video')
-  })
 }

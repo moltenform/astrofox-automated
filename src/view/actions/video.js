@@ -1,7 +1,5 @@
 import create from 'zustand';
 import { videoRenderer, player } from 'global';
-import debug from 'debug';
-const log = debug('vid');
 
 const initialState = {
   active: false,
@@ -16,11 +14,6 @@ const initialState = {
 const videoStore = create(() => ({ ...initialState }));
 
 export function startRender(props) {
-  //console.error('theprops', JSON.stringify(props))
-  //console.log('theprops', JSON.stringify(props))
-  //log('theprops', JSON.stringify(props))
-  //return
-
   player.stop();
 
   setTimeout(() => {

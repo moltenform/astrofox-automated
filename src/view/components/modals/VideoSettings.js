@@ -35,9 +35,6 @@ const initialState = {
   timeEnd: 0,
 };
 
-var hasDoneItYet = false
-var hasDoneItYet2 = false
-
 export default function VideoSettings({ onClose }) {
   const [audioFile, duration] = useAudio(state => [state.file, state.duration], shallow);
   const [state, setState] = useState(initialState);
@@ -53,82 +50,6 @@ export default function VideoSettings({ onClose }) {
       timeEnd: duration,
     }));
   }, []);
-
-//autoRenderVid
-// this intentionally gets fired several times, until the right one comes
-    setTimeout(() => {
-      console.log('tmmmm')
-      if (!hasDoneItYet) 
-      {
-        console.log('hasDoneItYet1')
-        autoRenderVidInPlayer()
-        hasDoneItYet = true
-      }
-  }, 3 * 1000)
-  //setTimeout(() => {
-  //  handleStart()
-  //}, 6 * 1000)
-
- //setTimeout(() => {
- //  if (!hasDoneItYet2) {
- //      console.log('hasDoneItYet2')
- //      handleStart()
- //    hasDoneItYet2 = true
- //  }
- //}, 7 * 1000)
-
-  function autoRenderVidInPlayer() {
-    setState(state => ({
-      ...state,
-      "videoFile":"H:\\ttt.mp4",
-      //"fps":12, 
-      //"quality":"low",
-      "fps":6, 
-      "quality":"high",
-    }));
-       
-
-    return
-    console.log('current state is this', JSON.stringify(state))
-    if (hasDoneItYet) {
-      console.log('skipping, already done')
-      return
-    }
-    if (state.timeEnd > 0) {
-    console.log('yay timeend')
-    } else {
-      console.log('notyet timeend')
-      return
-    }
-
-    hasDoneItYet = true
-    const vprops1 = 
-    {"videoFile":"H:\\ttt.mp4","codec":"x264","fps":8,"quality":"high",
-    
-    //"timeStart":0,"timeEnd":21.72517006802721,
-    //"audioFile":"D:\\mirr3\\devhere\\w2bautomate\\auto-input.ogg"
-    }
-    setState(state => ({
-      ...state,
-      ...vprops1
-    }));
-
-    setTimeout(() => {
-      handleStart()
-    }, 2000)
-
-    return
-    const vprops = 
-    {"videoFile":"H:\\ttt.mp4","codec":"x264","fps":8,"quality":"high",
-    "timeStart":0,"timeEnd":21.72517006802721,"audioFile":"D:\\mirr3\\devhere\\w2bautomate\\auto-input.ogg"}
-    setState(state => ({
-      ...state,
-      ...vprops
-    }));
-    setTimeout(() => {
-      handleStart()
-    }, 2000)
-  }
 
   function handleChange(props) {
     if (props.codec && videoFile) {
@@ -174,10 +95,9 @@ export default function VideoSettings({ onClose }) {
     }));
   }
 
-
   return (
     <Layout width={700}>
-      <Settings columns={['40%', '60%']} onChange={handleChange}  >
+      <Settings columns={['40%', '60%']} onChange={handleChange}>
         <Setting
           label="Save Video To"
           type="text"
